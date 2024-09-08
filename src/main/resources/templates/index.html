@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Healthcare Resource Allocation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a8c0ff, #ccf2ff); /* Pastel gradient */
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 40px;
+            color: #333;
+            animation: fadeIn 2s ease-in-out;
+            background: linear-gradient(135deg, #666666, #666666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .intro {
+            margin-bottom: 40px;
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #666666;
+            background: rgba(255, 255, 255, 0.4); 
+            padding: 15px 30px;
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .links a:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .contact {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background:#a8c0ff;
+        }
+
+        .contact a {
+              display: block;
+             color: #666666;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;           
+        }
+
+        .contact a:hover {
+            color: #e6e6e6;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><br>Healthcare Resource Management System</h1>
+        <p class="intro"><br><br></p>
+        <div class="links">
+            <a href="/patients">Manage Patients</a>
+            <a href="/doctors">Manage Doctors</a>
+            <a href="/nurses">Manage Nurses</a>
+            <a href="/accommodations">Manage Accommodations</a>
+        </div>
+    </div>
+    <div class="contact">
+        <p><a href="mailto:shivprakashlps@gmail.com">Contact Me</a></p>
+    </div>
+</body>
+</html>

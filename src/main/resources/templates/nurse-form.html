@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nurse Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a8c0ff, #ccf2ff); /* Pastel gradient */
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #a8c0ff;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background: #80a4ff;
+            transform: scale(1.05);
+        }
+
+        a {
+            display: block;
+             color: #a8c0ff;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #80a4ff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${nurse == null} ? 'Add New Nurse' : 'Edit Nurse'"></h1>
+        
+        <form th:action="@{/nurses/save}" th:object="${nurse}" method="post">
+            <input type="hidden" th:field="*{id}" />
+
+            <div>
+                <label>Name:</label>
+                <input type="text" th:field="*{name}" placeholder="Enter nurse name" required />
+            </div>
+
+            <div>
+                <label>Doctor:</label>
+                <select th:field="*{doctor}" required>
+                    <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.name}"></option>
+                </select>
+            </div>
+
+            <button type="submit">Save</button>
+        </form>
+
+        <a th:href="@{/nurses}">Back to Nurses List</a>
+    </div>
+</body>
+</html>

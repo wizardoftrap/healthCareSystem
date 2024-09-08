@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a8c0ff, #ccf2ff); /* Pastel gradient */
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            padding: 40px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #a8c0ff;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #80a4ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #a8c0ff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .actions a {
+            background: #a8c0ff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .actions a:hover {
+            background: #80a4ff;
+            transform: scale(1.05);
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .back-home:hover {
+            color: #f56c6c; /* Pastel red */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Patients List</h1>
+        <a href="/patients/new">Add New Patient</a> | <a href="/">Home</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Emergency Level</th>
+                    <th>Doctor</th>
+                    <th>Status</th>
+                    <th>Accommodation</th>
+                    <th>Assigned Nurses</th> <!-- New Column for Nurses -->
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="patient : ${patients}">
+                    <td th:text="${patient.name}">Patient Name</td>
+                    <td th:text="${patient.age}">Patient Age</td>
+                    <td th:text="${patient.emergencyLevel}">Emergency Level</td>
+                    <td th:text="${patient.assignedDoctor.name}">Assigned Doctor</td>
+                    <td th:text="${patient.status}">Status</td>
+                    <td th:text="${patient.accommodation.type}">Accommodation</td>
+                    <td>
+                        <ul>
+                            <li th:each="nurse : ${patient.assignedNurses}" th:text="${nurse.name}"></li>
+                        </ul>
+                    </td>
+                    <td class="actions">
+                        <a th:href="@{/patients/edit/{id}(id=${patient.id})}">Edit</a>
+                        <a th:href="@{/patients/checkout/{id}(id=${patient.id})}">Check Out</a>
+                        <a th:href="@{/patients/refer/{id}(id=${patient.id})}">Refer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

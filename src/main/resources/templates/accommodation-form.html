@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Accommodation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a8c0ff, #ccf2ff); /* Pastel gradient */
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #a8c0ff;
+            width: 100%;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background: #80a4ff;
+            transform: scale(1.05);
+        }
+
+        a {
+            display: block;
+             color: #a8c0ff;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #80a4ff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${accommodation.id != null ? 'Edit Accommodation' : 'Add Accommodation'}"></h1>
+   
+        <form th:action="@{/accommodations/save}" th:object="${accommodation}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div>
+                <label for="type">Accommodation Type:</label>
+                <select id="type" th:field="*{type}">
+                    <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+                </select>
+            </div>
+            <div>
+                <label for="totalCapacity">Total Capacity:</label>
+                <input type="number" id="totalCapacity" th:field="*{totalCapacity}" required />
+            </div>
+            <div>
+                <label for="availableCapacity">Available Capacity:</label>
+                <input type="number" id="availableCapacity" th:field="*{availableCapacity}" required />
+            </div>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+        <a href="/accommodations">Back to list</a>
+    </div>
+</body>
+</html>

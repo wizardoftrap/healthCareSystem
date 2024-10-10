@@ -40,6 +40,8 @@ A comprehensive Hospital Management System built with **Java Spring Boot**, **Th
 - **Maven**: Build automation tool for managing dependencies and building the application.
 - **CSS**: Custom styling with gradients and animations to enhance user experience.
 ## Screenshots
+### Home Page
+![image](https://github.com/user-attachments/assets/b1148f45-774b-41bb-9e17-1d6472273a81)
 
 ### Doctors List
 ![Doctors List](https://via.placeholder.com/800x400) <!-- Replace with a screenshot of the doctors list page -->

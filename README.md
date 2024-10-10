@@ -26,7 +26,9 @@ A comprehensive Hospital Management System built with **Java Spring Boot**, **Th
 
 - **Emergency Levels**: 
   - Track emergency levels assigned to patients (1-5), indicating the urgency of their condition.
-
+- **Auto Re-allocate**
+   - When emergency level of patient is changed the respective patient get new accommodation according to their new emergency level if needed.
+   - When a patient is checked out or get referred vacant accomodation is allocated to needed or compromised patients.
 - **Responsive and Modern UI**:
   - The application uses pastel colors with color gradients and animations.
   - Designed to be user-friendly and easy to navigate.
@@ -44,13 +46,16 @@ A comprehensive Hospital Management System built with **Java Spring Boot**, **Th
 ![image](https://github.com/user-attachments/assets/b1148f45-774b-41bb-9e17-1d6472273a81)
 
 ### Doctors List
-![Doctors List](https://via.placeholder.com/800x400) <!-- Replace with a screenshot of the doctors list page -->
+![image](https://github.com/user-attachments/assets/0b41277a-0e90-4cb2-83ef-f2dea9d6d511)
+
 
 ### Patients List
-![Patients List](https://via.placeholder.com/800x400) <!-- Replace with a screenshot of the patients list page -->
+![image](https://github.com/user-attachments/assets/2f72ce39-c7ca-4530-bdc0-3c37115ae434)
+
 
 ### Nurse Management
-![Nurse Management](https://via.placeholder.com/800x400) <!-- Replace with a screenshot of the nurses list page -->
+![image](https://github.com/user-attachments/assets/21db9e6f-f6ff-4ef8-9e41-385db5ca2b92)
+
 
 ### Accommodation Form
-![Accommodation Form](https://via.placeholder.com/800x400) <!-- Replace with a screenshot of the accommodation form page -->
+![image](https://github.com/user-attachments/assets/ba2b34ee-86ef-4a5b-80ac-318cffb4a1fd)
